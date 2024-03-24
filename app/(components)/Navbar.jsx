@@ -18,7 +18,7 @@ export default function Navbar() {
     <div className={`${styles.flexCenter} w-full  `}>
       <div className={`flex justify-between w-full max-w-7xl bg-slate-700 p-6`}>
         <div className={`${styles.flexStart} gap-16`}>
-          <div className="flex flex-row items-center gap-5">
+          <div className="flex flex-row items-center gap-5 font-poppins">
             {" "}
             <div
               className="sm:hidden items-start text-2xl cursor-pointer"
@@ -29,7 +29,7 @@ export default function Navbar() {
             <h1>Logo</h1>
           </div>
           <div className="sm:block hidden">
-            <ul className="list-none sm:flex hidden justify-end items-center flex-1 gap-8">
+            <ul className="font-poppins list-none sm:flex hidden justify-end items-center flex-1 gap-8">
               {navigationLinks.map((link) => (
                 <li key={link.id} className="cursor-pointer">
                   <Link href={link.href}>{link.name}</Link>
@@ -42,10 +42,9 @@ export default function Navbar() {
         <div
           className={`${
             !toggle ? "flex" : "hidden"
-          } sm:hidden flex  p-6 bg-slate-300 fixed top-20 right-100  min-w-[50%]  rounded-lg sidebar  
-          `}
+          } sm:hidden flex p-6 bg-slate-300 absolute top-20 left-0 min-w-[50%] rounded-sm h- sidebar`}
         >
-          <ul className="list-none flex flex-col justify-end items-start flex-1">
+          <ul className="list-none flex flex-col justify-start items-start flex-1">
             {navigationLinks.map((link, index) => (
               <li
                 key={link.id}
@@ -62,7 +61,8 @@ export default function Navbar() {
         <div className={`${styles.flexCenter} gap-4 text-2xl`}>
           <span className="text-xl">
             <BsSearch />
-          </span>
+          </span>{" "}
+          <span className="border-[0.1px] border-black h-[30px]"></span>
           <span>
             {" "}
             <HiOutlineShoppingBag />
