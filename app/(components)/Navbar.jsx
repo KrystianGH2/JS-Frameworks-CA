@@ -42,9 +42,9 @@ export default function Navbar() {
         <div
           className={`${
             !toggle ? "flex" : "hidden"
-          } sm:hidden flex p-6 bg-slate-300 absolute top-20 right-100 min-w-[50%] rounded-lg sidebar`}
+          } sm:hidden flex p-6 bg-slate-300 absolute top-20 left-0 min-w-[50%] rounded-sm h- sidebar`}
         >
-          <ul className="list-none flex flex-col justify-end items-start flex-1">
+          <ul className="list-none flex flex-col justify-start items-start flex-1">
             {navigationLinks.map((link, index) => (
               <li
                 key={link.id}
