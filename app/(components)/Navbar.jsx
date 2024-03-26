@@ -6,6 +6,7 @@ import { BsSearch } from "react-icons/bs";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { CgClose } from "react-icons/cg";
+import Categories from "./Categories";
 
 export default function Navbar() {
   const [toggle, setToggle] = useState(true);
@@ -30,9 +31,17 @@ export default function Navbar() {
           </div>
           <div className="sm:block hidden">
             <ul className="font-poppins list-none sm:flex hidden justify-end items-center flex-1 gap-8">
-              {navigationLinks.map((link) => (
-                <li key={link.id} className="cursor-pointer">
-                  <Link href={link.href}>{link.name}</Link>
+              {navigationLinks.map((link, index) => (
+                <li key={link.id} className="cursor-pointer ">
+                  {index === 0 && navigationLinks[0].name === "Shop" ? (
+                    <div className={`${styles.flexCenter} gap-3`}>
+                      <Link href={link.href}>{link.name}</Link>
+
+                      <Categories />
+                    </div>
+                  ) : (
+                    <Link href={link.href}>{link.name}</Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -52,7 +61,15 @@ export default function Navbar() {
                   index === navigationLinks.length - 1 ? "mr-0" : "mb-10"
                 } text-white`}
               >
-                <Link href={link.href}>{link.name}</Link>
+                {index === 0 && navigationLinks[0].name === "Shop" ? (
+                  <div className={`${styles.flexCenter} gap-3`}>
+                    <Link href={link.href}>{link.name}</Link>
+
+                    <Categories />
+                  </div>
+                ) : (
+                  <Link href={link.href}>{link.name}</Link>
+                )}
               </li>
             ))}
           </ul>

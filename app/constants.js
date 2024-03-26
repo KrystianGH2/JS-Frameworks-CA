@@ -1,8 +1,14 @@
 export const navigationLinks = [
     {
-        id: "home",
-        name: "Home",
-        href: "/",
+        id: "product",
+        name: "Shop",
+        href: "/Product",
+        category: ["tags"]
+    },
+    {
+        id: "onSale",
+        name: "On Sale",
+        href: "#onSale",
     },
     {
         id: "about",
@@ -13,11 +19,6 @@ export const navigationLinks = [
         id: "contact",
         name: "Contact",
         href: "/Contact",
-    },
-    {
-        id: "product",
-        name: "Product",
-        href: "/Product",
     }
 ]
 
