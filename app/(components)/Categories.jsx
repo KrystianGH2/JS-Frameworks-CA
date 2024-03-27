@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import Link from "next/link";
 
@@ -15,12 +15,7 @@ export default function Categories() {
     setToggle(false);
   };
 
-  // handleOnClose = () => {
-  //   setTimeout(() => {
-  //     setToggle(false);
-  //   }, 2000);
-  // };
-
+  const screenWidth = 768;
   return (
     <div className="relative">
       <button onMouseEnter={handleOnClick} className="pt-2">
@@ -29,11 +24,15 @@ export default function Categories() {
       {toggle && (
         <ul
           onMouseLeave={handleMouseLeave}
-          className="flex flex-col transition bg-slate-950 w-[150px] justify-start items-start  absolute  top-8 rounded-md gap-2"
+          className={`flex flex-col transition bg-slate-50 w-[180px] justify-start items-start  absolute ${
+            screen.width <= screenWidth
+              ? "top-8  bg-gray-50 "
+              : "top-10 bg-slate-600"
+          }   rounded-sm gap-2`}
         >
           {categories.map((category) => (
             <Link
-              className="p-2 hover:bg-slate-500 w-full"
+              className="p-2  hover:bg-slate-100 w-full"
               key={category}
               href={`/${category}`}
             >
