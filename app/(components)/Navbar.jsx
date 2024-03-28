@@ -10,7 +10,6 @@ import {
 } from "react-icons/hi";
 import Categories from "./Categories";
 import SearchBar from "./SearchBar";
-import Hero from "./Hero";
 
 export default function Navbar() {
   const [toggle, setToggle] = useState(true);
@@ -92,15 +91,6 @@ export default function Navbar() {
               {" "}
               <HiOutlineShoppingBag />
             </span>
-          </div>
-        </div>
-
-        <div className="w-full justify-center flex-col bg-[#F2F0F1]">
-          <div className={styles.flexCenter}>
-            <div className=" w-full max-w-7xl">
-              {" "}
-              <Hero />{" "}
-            </div>
           </div>
         </div>
       </div>
