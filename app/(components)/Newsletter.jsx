@@ -2,11 +2,9 @@ import React from "react";
 import { MdOutlineMailOutline } from "react-icons/md";
 
 export default function Newsletter() {
-  const handleOnSubmit = {
-    handleOnSubmit: (e) => {
-      e.preventDefault();
-      console.log("submitted");
-    },
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log("Subscribed");
   };
   return (
     <div className="flex justify-center items-center w-full ">

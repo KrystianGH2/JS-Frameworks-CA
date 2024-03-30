@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
         </div>
         <div
-          className={`${styles.flexCenter} w-full px-3 text-black  pt-60 pb-10`}
+          className={`${styles.flexCenter} w-full px-3 text-black  pt-60 lg:pt-40 pb-10`}
         >
           <section className="flex flex-col w-full justify-between  max-w-7xl  md:px-0 lg:flex-row  ">
             <section className="flex flex-col w-full pb-[px] md:w-[60%]">
