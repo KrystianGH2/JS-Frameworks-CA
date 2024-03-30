@@ -10,13 +10,19 @@ import apple from "../../public/apple.png";
 import gpay from "../../public/gpay.png";
 import Link from "next/link";
 import Image from "next/image";
+import Newsletter from "./Newsletter";
 
 export default function Footer() {
   return (
     <>
-      <main className="flex flex-col bg-[#F0F0F0]">
+      <main className="flex flex-col bg-[#F0F0F0] ">
+        <div className="flex justify-center items-center relative ">
+          <div id="newsLetter" className="w-full absolute -top-50 px-2">
+            <Newsletter  />
+          </div>
+        </div>
         <div
-          className={`${styles.flexCenter} w-full px-3 text-black  pt-16 pb-10`}
+          className={`${styles.flexCenter} w-full px-3 text-black  pt-60 pb-10`}
         >
           <section className="flex flex-col w-full justify-between  max-w-7xl  md:px-0 lg:flex-row  ">
             <section className="flex flex-col w-full pb-[px] md:w-[60%]">
@@ -136,9 +142,11 @@ export default function Footer() {
 
         <section className="flex flex-col justify-center items-center w-full text-black  ">
           <div className="flex  flex-col items-center justify-between w-full max-w-7xl py-10 gap-5 sm:flex-row px-3 lg:px-2 ">
-            <p className="text-sm font-medium text-gray-500">ECOM.co © 2000-2023, All Rights Reserved</p>
+            <p className="text-sm font-medium text-gray-500">
+              ECOM.co © 2000-2023, All Rights Reserved
+            </p>
 
-            <div  className="flex gap-2">
+            <div className="flex gap-2">
               <span className="p-1 rounded border border-gray-200 bg-white h-10 flex justify-center items-center w-14">
                 <Image src={visa} alt="visa" width={40} height={40}></Image>
               </span>
@@ -168,7 +176,6 @@ export default function Footer() {
                   height={40}
                 ></Image>
               </span>
-
             </div>
           </div>
         </section>
