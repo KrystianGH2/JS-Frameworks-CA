@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className={`${styles.flexCenter} w-full flex-col  `}>
+      <div className={`${styles.flexCenter} w-full flex-col  px-2 lg:px-0`}>
         <div
           className={`flex justify-between w-full max-w-7xl bg-white text-black py-6 relative sm:px-0 px-2`}
         >
@@ -35,7 +35,7 @@ export default function Navbar() {
               </div>
               <h1 className="font-poppins">Logo</h1>
             </div>
-            <div className="sm:block hidden">
+            <div className="md:block hidden">
               <ul className="font-poppins list-none sm:flex sm:pt-1 hidden justify-end items-center flex-1 gap-8">
                 {navigationLinks.map((link, index) => (
                   <li key={link.id} className="cursor-pointer ">

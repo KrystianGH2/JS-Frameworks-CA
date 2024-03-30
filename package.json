@@ -21,6 +21,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "autoprefixer": "^10.0.1",
     "cypress": "^13.7.1",
+    "daisyui": "^4.9.0",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "postcss": "^8",

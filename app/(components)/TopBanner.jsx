@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 import { HiOutlineX } from "react-icons/hi";
 import { styles } from "../constants";
@@ -20,7 +21,9 @@ export default function TopBanner() {
           {" "}
           <p>
             Subscribe to our{" "}
-            <b className="underline cursor-pointer">Newsletter</b>{" "}
+            <b className="underline cursor-pointer">
+              <Link href="#newsLetter">Newsletter</Link>{" "}
+            </b>{" "}
             <br className="sm:hidden block" />
             and get 20% off to your first order.
           </p>

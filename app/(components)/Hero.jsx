@@ -6,8 +6,8 @@ import pic from "../../public/headsets.png";
 export default function Hero() {
   return (
     <div className={`${styles.flexCenter} `}>
-      <div className="flex justify-between w-full sm:flex sm:flex-row sm:p-0 px-3 flex-col ">
-        <div className="py-10 flex flex-col justify-around gap-8 sm:gap-5">
+      <div className="flex justify-between items-center md:items-start w-full md:flex md:flex-row sm:p-0 px-3 flex-col ">
+        <div className="py-10 flex flex-col justify-around  gap-8 sm:gap-5 p-2 lg:px-0">
           <div className="max-w-xl  flex flex-col gap-5 pb-5">
             <h1 className="text-6xl text-black font-black sm:mb-1">
               FIND ITEMS THAT MATCHES YOUR STYLE
@@ -20,7 +20,7 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col gap-8">
-            <button className=" bg-black py-3  sm:max-w-[250px] rounded-full cursor-pointer mb-2">
+            <button className=" bg-black py-3  md:max-w-[300px] rounded-full cursor-pointer mb-2">
               SHOP NOW
             </button>
 
