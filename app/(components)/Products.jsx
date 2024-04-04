@@ -73,7 +73,7 @@ export default function Products() {
                 className="select select-light w-full max-w-[250px] bg-white outline-none"
                 onChange={handleSortChange}
               >
-                <option disabled selected>
+                <option disabled defaultValue="">
                   Pick the sorting option
                 </option>
                 <option value="ascendingPrice">Price: Low to High</option>
