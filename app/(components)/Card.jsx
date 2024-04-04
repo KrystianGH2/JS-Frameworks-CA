@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import Image from "next/image";
 import { styles } from "../constants";
@@ -34,7 +35,7 @@ export default function Card({ product }) {
             </div>
 
             <div className={`${styles.flexStart} gap-2 flex-row pt-2`}>
-              <p className="font-bold">{product.price}</p>
+              <p className="font-bold">NOK {product.price}</p>
               <s className="font-bold text-black opacity-50">
                 {product.discountedPrice}
               </s>
