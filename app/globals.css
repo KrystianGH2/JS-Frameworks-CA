@@ -18,6 +18,13 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+::-webkit-scrollbar {
+  display: none;
+}
+.scrollable-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
 body {
   color: rgb(var(--foreground-rgb));
