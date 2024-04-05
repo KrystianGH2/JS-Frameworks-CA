@@ -3,14 +3,13 @@ import React, { useState, useEffect } from "react";
 import { getProductById } from "@/lib/utils/api";
 import Link from "next/link";
 import { styles } from "@/app/constants";
-import Image from "next/image";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import ReviewCards from "../../../(components)/ReviewCards";
 
 export default function ProductPage({ params }) {
   const [product, setProduct] = useState(null);
   const [rating, setRating] = useState(0);
-  const [reviewRating, setReviewRating] = useState(0);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -18,7 +17,6 @@ export default function ProductPage({ params }) {
         const response = await getProductById(params.id);
         setProduct(response.data);
         setRating(response.data.rating);
-        setReviewRating(response.reviews.rating);
       } catch (error) {
         console.error(error);
       }
@@ -39,7 +37,7 @@ export default function ProductPage({ params }) {
       <div className="flex w-full justify-center min-h-screen px-3 sm:px-5 lg:px-0 ">
         <div className="w-full flex flex-col max-w-7xl ">
           {/*breadCrumps/ */}
-          <div className="text-sm breadcrumbs w-full max-w-7xl text-black pl-2 lg:pl-0">
+          <div className="text-sm breadcrumbs w-full max-w-7xl text-black pl-2 lg:pl-0 lg:pb-5">
             <ul>
               <li>
                 <Link href="/">Home</Link>
@@ -125,25 +123,37 @@ export default function ProductPage({ params }) {
               </div>
             </div>
           </section>{" "}
-          <div className="flex w-full py-5">
+          <div className="flex w-full py-10 lg:py-20">
             <hr className="flex w-full max-w-7xl" />
           </div>
           {/* Section 2/ */}
           <section className="flex w-full justify-center max-w-7xl p-2 text-black lg:px-0 ">
-            <div className="flex w-full flex-row justify-between">
-              <p className="flex flax-row gap-3 items-center">
-                All reviews{" "}
-                <span className="text-black opacity-50">
-                  ( {product.reviews.length} )
-                </span>
-              </p>
-              <div className="flex flex-row  gap-2 lg:gap-3">
-                <button className="bg-gray-300 text-black font-medium w-[120px] h-[40px] rounded-full">
-                  Latest
-                </button>
-                <button className="bg-black text-white text-sm  w-[130px] h-[40px] rounded-full">
-                  Write a review
-                </button>
+            <div className="flex flex-col w-full max-w-7xl gap-6">
+              <div className="flex w-full flex-row justify-between">
+                <p className="flex flax-row gap-3 items-center">
+                  All reviews{" "}
+                  <span className="text-black opacity-50">
+                    ( {product.reviews.length} )
+                  </span>
+                </p>
+                <div className="flex flex-row  gap-2 lg:gap-3">
+                  <button className="bg-gray-300 text-black font-medium w-[120px] h-[40px] rounded-full">
+                    Latest
+                  </button>
+                  <button className="bg-black text-white text-sm  w-[130px] h-[40px] rounded-full">
+                    Write a review
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex  flex-col gap-4  justify-center lg:flex-row md:justify-start md:gap-6 md:flex-wrap max-w-[1280px]">
+                {product.reviews && product.reviews.length > 0 ? (
+                  product.reviews.map((item) => (
+                    <ReviewCards key={item.id} review={item} />
+                  ))
+                ) : (
+                  <p>This product has no reviews yet.</p>
+                )}
               </div>
             </div>
           </section>
