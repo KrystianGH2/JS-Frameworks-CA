@@ -74,8 +74,8 @@ export default function SearchBar() {
               className=""
               onClick={handleLinkClick}
             >
-              <ul className="flex flex-row justify-between px-2 w-full list-none rounded h-10 items-center hover:bg-[#0000000a]">
-                <li className="list-none ">{product.title}</li>
+              <ul className="flex flex-row justify-between px-2 w-full list-none rounded h-12 items-center hover:bg-[#0000000a]">
+                <li className="list-none flex justify-center items-center gap-2 "><img className="w-8 h-8" src={product.image.url} alt={product.title} />{product.title}</li>
                 <li className="list-none text-sm">{product.price}</li>
               </ul>
               <hr className="px-5" />
