@@ -54,7 +54,9 @@ export default function Card({ product }) {
                 {percentageSaved <= 0 ? (
                   <span></span>
                 ) : (
-                  <span className="bg-red-100 px-2 py-[2px] rounded-full text-red-500 text-sm font-medium">-{percentageSaved}%</span>
+                  <span className="bg-red-100 px-2 py-[2px] rounded-full text-red-500 text-sm font-medium">
+                    -{percentageSaved}%
+                  </span>
                 )}
               </div>
             </div>
