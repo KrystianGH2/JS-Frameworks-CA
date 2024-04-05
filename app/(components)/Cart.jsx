@@ -2,8 +2,10 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon, PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 import usePaginationStore from "@/lib/utils/store";
+import Link from "next/link";
 
 export default function Cart() {
+  const [productDiscount, setProductDiscount] = useState(false);
   const {
     total,
     products,
@@ -11,6 +13,7 @@ export default function Cart() {
     clearCart,
     addToCart,
     removeItem,
+    count,
   } = usePaginationStore((state) => ({
     total: state.total,
     products: state.items,
@@ -18,6 +21,7 @@ export default function Cart() {
     clearCart: state.clearCart,
     addToCart: state.addToCart,
     removeItem: state.removeItem,
+    count: state.count,
   }));
   const { isOpen, toggleOpen } = usePaginationStore();
 
@@ -94,9 +98,27 @@ export default function Cart() {
                                           {product.title}
                                         </a>
                                       </h3>
-                                      <p className="ml-4">
-                                        {product.discountedPrice}
-                                      </p>
+                                      <div className="flex items-center ">
+                                        <div className="flex items-center">
+                                          {product.price ===
+                                            product.discountedPrice && (
+                                            <>
+                                              <p>{product.price}</p>
+                                            </>
+                                          )}
+                                          {product.price !==
+                                            product.discountedPrice && (
+                                            <>
+                                              <p className=" flex gap-2 text-red-500">
+                                                <s className="text-gray-400">
+                                                  {product.price}
+                                                </s>
+                                                {product.discountedPrice}
+                                              </p>
+                                            </>
+                                          )}
+                                        </div>
+                                      </div>
                                     </div>
                                     <p className="mt-1 text-sm text-gray-500">
                                       {product.color}
@@ -163,12 +185,22 @@ export default function Cart() {
                         </button>
                       </div>
                       <div className="mt-6">
-                        <a
-                          href="#"
-                          className="flex items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900"
-                        >
-                          Checkout
-                        </a>
+                        {count <= 0 ? (
+                          <Link
+                            href="/CheckOutPage"
+                            className="flex items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900"
+                          >
+                            Checkout
+                          </Link>
+                        ) : (
+                          <Link
+                            disabled
+                            href="/CheckOutPage"
+                            className="flex items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-900"
+                          >
+                            Checkout
+                          </Link>
+                        )}
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
