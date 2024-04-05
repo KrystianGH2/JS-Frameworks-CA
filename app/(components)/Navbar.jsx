@@ -79,7 +79,7 @@ export default function Navbar() {
               ))}
             </ul>
           </div>
-          <div className="bg-slate-100 flex-auto rounded-full sm:mx-6 mx-2 p-2">
+          <div className="bg-[#F0F0F0] flex-auto rounded-full sm:mx-6 mx-2 p-2">
             <span className="w-full flex flex-row justify-start items-center">
               <HiOutlineSearch className="text-gray-500 mx-[5px] text-lg" />
               <SearchBar />
