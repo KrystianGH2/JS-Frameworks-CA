@@ -15,6 +15,9 @@ import usePaginationStore from "@/lib/utils/store";
 export default function Navbar() {
   const [toggle, setToggle] = useState(true);
   const { isOpen, toggleOpen } = usePaginationStore();
+  const { count } = usePaginationStore((state) => ({
+    count: state.count,
+  }));
 
   const handleOnToggle = () => {
     setToggle((prev) => !prev);
@@ -92,7 +95,12 @@ export default function Navbar() {
             <span className="cursor-pointer" onClick={toggleOpen}>
               {" "}
               <Cart />
-              <HiOutlineShoppingBag />
+              <div className="flex flex-row">
+                <HiOutlineShoppingBag />
+                <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                  {count}
+                </span>
+              </div>
             </span>
           </div>
         </div>
