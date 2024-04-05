@@ -5,12 +5,14 @@ import { styles } from "../constants";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import Link from "next/link";
+import usePaginationStore from "@/lib/utils/store";
 
 export default function Card({ product }) {
   const [rating, setRating] = useState(product.rating);
 
   const discountedPrice = product.price - product.discountedPrice;
   const percentageSaved = ((discountedPrice / product.price) * 100).toFixed(0);
+  const addToCart = usePaginationStore((state) => state.addToCart);
 
   const initialPrice = product.price;
 
@@ -61,6 +63,7 @@ export default function Card({ product }) {
               </div>
             </div>
           </Link>
+          <button onClick={() => addToCart(product)}>Add to Cart</button>
         </div>
       </section>
     </div>

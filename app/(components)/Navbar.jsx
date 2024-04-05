@@ -10,9 +10,11 @@ import {
 } from "react-icons/hi";
 import Categories from "./Categories";
 import SearchBar from "./SearchBar";
-
+import Cart from "./Cart";
+import usePaginationStore from "@/lib/utils/store";
 export default function Navbar() {
   const [toggle, setToggle] = useState(true);
+  const { isOpen, toggleOpen } = usePaginationStore();
 
   const handleOnToggle = () => {
     setToggle((prev) => !prev);
@@ -33,7 +35,7 @@ export default function Navbar() {
               >
                 {toggle ? <HiOutlineMenuAlt2 /> : <HiOutlineX />}
               </div>
-              <h1 className="font-poppins">Logo</h1>
+              <h1 className="font-poppins">ECOM.CO</h1>
             </div>
             <div className="md:block hidden">
               <ul className="font-poppins list-none sm:flex sm:pt-1 hidden justify-end items-center flex-1 gap-8">
@@ -43,7 +45,7 @@ export default function Navbar() {
                       <div className={`${styles.flexCenter} gap-3`}>
                         <Link href={link.href}>{link.name}</Link>
 
-                        <Categories />
+                        {/* <Categories /> */}
                       </div>
                     ) : (
                       <Link href={link.href}>{link.name}</Link>
@@ -70,7 +72,7 @@ export default function Navbar() {
                     <div className={`${styles.flexCenter} gap-3 `}>
                       <Link href={link.href}>{link.name}</Link>
 
-                      <Categories />
+                      {/* <Categories /> */}
                     </div>
                   ) : (
                     <Link href={link.href}>{link.name}</Link>
@@ -87,8 +89,9 @@ export default function Navbar() {
           </div>
 
           <div className={`${styles.flexCenter} gap-4 text-2xl sm:pl-4 pl-0`}>
-            <span>
+            <span className="cursor-pointer" onClick={toggleOpen}>
               {" "}
+              <Cart />
               <HiOutlineShoppingBag />
             </span>
           </div>
