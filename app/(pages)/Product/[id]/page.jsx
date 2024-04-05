@@ -127,7 +127,7 @@ export default function ProductPage({ params }) {
             <hr className="flex w-full max-w-7xl" />
           </div>
           {/* Section 2/ */}
-          <section className="flex w-full justify-center max-w-7xl p-2 text-black lg:px-0 ">
+          <section className="flex w-full justify-center max-w-7xl p-2 text-black lg:px-0 min-h-screen">
             <div className="flex flex-col w-full max-w-7xl gap-6">
               <div className="flex w-full flex-row justify-between">
                 <p className="flex flax-row gap-3 items-center">
