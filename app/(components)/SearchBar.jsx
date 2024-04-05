@@ -63,7 +63,7 @@ export default function SearchBar() {
 
       <div
         className={`absolute  top-10 py-1 w-full z-50 rounded-sm flex flex-col gap-2 ${
-          inputValue.length <= 0 ? "bg-white" : "bg-[#f0f0f0]"
+          inputValue.length <= 0 ? "bg-[#f0f0f000]" : "bg-[#f0f0f0]"
         }`}
       >
         {inputValue.length > 0 &&
@@ -75,7 +75,14 @@ export default function SearchBar() {
               onClick={handleLinkClick}
             >
               <ul className="flex flex-row justify-between px-2 w-full list-none rounded h-12 items-center hover:bg-[#0000000a]">
-                <li className="list-none flex justify-center items-center gap-2 "><img className="w-8 h-8" src={product.image.url} alt={product.title} />{product.title}</li>
+                <li className="list-none flex justify-center items-center gap-2 ">
+                  <img
+                    className="w-8 h-8"
+                    src={product.image.url}
+                    alt={product.title}
+                  />
+                  {product.title}
+                </li>
                 <li className="list-none text-sm">{product.price}</li>
               </ul>
               <hr className="px-5" />

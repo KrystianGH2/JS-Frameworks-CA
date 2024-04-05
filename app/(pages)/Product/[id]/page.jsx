@@ -6,10 +6,15 @@ import { styles } from "@/app/constants";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import ReviewCards from "../../../(components)/ReviewCards";
+import usePaginationStore from "@/lib/utils/store";
 
 export default function ProductPage({ params }) {
   const [product, setProduct] = useState(null);
   const [rating, setRating] = useState(0);
+
+  const { addToCart } = usePaginationStore((state) => ({
+    addToCart: state.addToCart,
+  }));
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -114,7 +119,10 @@ export default function ProductPage({ params }) {
                       </button>
                     </div>
                     <div>
-                      <button className="bg-black text-white py-[10px] px-10 w-[180px] rounded-full">
+                      <button
+                        onClick={() => addToCart(product)}
+                        className="bg-black text-white py-[10px] px-10 w-[180px] rounded-full"
+                      >
                         Add to cart
                       </button>
                     </div>
