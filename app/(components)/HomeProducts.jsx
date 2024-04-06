@@ -50,7 +50,7 @@ export default function HomeProducts() {
   return (
     <div className="flex flex-col gap-5 pt-2 w-full">
       <h2 className="mt-4 font-semibold text-lg">NEW ARRIVALS</h2>
-      <div className={`${styles.flexCenter} w-full md:mb-30 mb-40 `}>
+      <div className={`${styles.flexCenter} w-full mb-20 `}>
         <div
           className={`flex flex-row justify-center gap-20 items-center xl:justify-start flex-wrap w-full max-w-7xl`}
         >
@@ -65,7 +65,7 @@ export default function HomeProducts() {
       </div>
       <h2 className="mt-4 font-semibold text-lg">TOP SELLER</h2>
       {currentPage === 1 && (
-        <div className={`${styles.flexCenter} w-full md:mb-52 mb-60 `}>
+        <div className={`${styles.flexCenter} w-full mb-20 `}>
           <div
             className={`flex flex-row justify-center gap-20 items-center xl:justify-start flex-wrap w-full max-w-7xl`}
           >
