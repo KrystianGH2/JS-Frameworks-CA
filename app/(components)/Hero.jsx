@@ -2,6 +2,7 @@ import React from "react";
 import { styles } from "../constants";
 import Image from "next/image";
 import pic from "../../public/headsets.png";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -20,9 +21,12 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col gap-8">
-            <button className=" bg-black py-3  md:max-w-[300px] rounded-full cursor-pointer mb-2">
-              SHOP NOW
-            </button>
+            <Link
+              className=" bg-black py-3  flex justify-center items-center hover:bg-slate-950 md:max-w-[300px] rounded-full cursor-pointer mb-2"
+              href={"Product"}
+            >
+              <button>SHOP NOW</button>
+            </Link>
 
             <div className="flex flex-wrap sm:max-w-xl w-full justify-between">
               <div className="flex flex-col ">

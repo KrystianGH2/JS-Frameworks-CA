@@ -6,6 +6,7 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import Link from "next/link";
 import usePaginationStore from "@/lib/utils/store";
+import { MdShoppingCartCheckout } from "react-icons/md";
 
 export default function Card({ product }) {
   const [rating, setRating] = useState(product.rating);
@@ -63,7 +64,9 @@ export default function Card({ product }) {
               </div>
             </div>
           </Link>
-          <button onClick={() => addToCart(product)}>Add to Cart</button>
+          <button  className="flex flex-row gap-2 items-center hover:drop-shadow-sm hover:text-gray-600 w-full font-medium" onClick={() => addToCart(product)}>
+            <MdShoppingCartCheckout className="text-xl"/> Add to cart
+          </button>
         </div>
       </section>
     </div>
