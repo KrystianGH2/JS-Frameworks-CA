@@ -10,19 +10,14 @@ import apple from "../../public/apple.png";
 import gpay from "../../public/gpay.png";
 import Link from "next/link";
 import Image from "next/image";
-import Newsletter from "./Newsletter";
 
 export default function Footer() {
   return (
     <>
       <main className="flex flex-col bg-[#F0F0F0] ">
-        <div className="flex justify-center items-center relative ">
-          <div id="newsLetter" className="w-full absolute -top-50 px-2">
-            <Newsletter  />
-          </div>
-        </div>
+       
         <div
-          className={`${styles.flexCenter} w-full px-3 text-black  pt-60 lg:pt-40 pb-10`}
+          className={`${styles.flexCenter} w-full px-3 text-black pt-28  pb-10`}
         >
           <section className="flex flex-col w-full justify-between  max-w-7xl  md:px-0 lg:flex-row  ">
             <section className="flex flex-col w-full pb-[px] md:w-[60%]">
