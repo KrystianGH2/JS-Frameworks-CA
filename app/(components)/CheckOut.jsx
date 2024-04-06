@@ -192,11 +192,24 @@ export default function CheckOut() {
               </button>
             </div>
             <div className="flex justify-center pb-10">
-              <button
-                onClick={clearCart}
-                className="flex items-center justify-center rounded-full border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm  w-full"
-              >
-                <Link href={"#"}>Go to Checkout -</Link>
+              <button className="flex items-center flex-row justify-center rounded-full border border-transparent bg-black px-6 py-3 text-base font-medium text-white shadow-sm  w-full">
+                <Link className="flex flex-row gap-2" href={"/PaymentDetails"}>
+                  Go to Checkout{" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                    />
+                  </svg>
+                </Link>
               </button>
             </div>
           </div>

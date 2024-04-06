@@ -17,13 +17,13 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="flex flex-col w-full">
           <TopBanner />
-          <main className=" flex justify-center bg-white min-h-screen">
+          <main className=" flex justify-center bg-white ">
             <div className="flex flex-col w-full">
               <Navbar />
               {children}
             </div>
           </main>
-          <Footer/>
+          <Footer />
         </div>
       </body>
     </html>
