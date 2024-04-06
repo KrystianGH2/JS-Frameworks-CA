@@ -18,7 +18,7 @@ export const navigationLinks = [
     {
         id: "contact",
         name: "Contact",
-        href: "/Contact",
+        href: "/About/#ContactForm",
     }
 ]
 
