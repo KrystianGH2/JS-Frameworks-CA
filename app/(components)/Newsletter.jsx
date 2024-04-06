@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { validateEmail } from "@/lib/utils/validation";
@@ -8,12 +9,18 @@ export default function Newsletter() {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const isValid = await validateEmail(email);
-    if (isValid) {
-      document.getElementById("my_modal_2").showModal();
-      setError("");
-    } else {
-      setError("Please enter a valid email");
+    try {
+      const isValid = await validateEmail(email);
+      if (isValid) {
+        document.getElementById("my_modal_2").showModal();
+        setError("");
+      } else {
+        setError("Please enter a valid email");
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setEmail("");
     }
   };
 
