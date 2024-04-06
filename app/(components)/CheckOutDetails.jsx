@@ -42,12 +42,7 @@ export default function CheckOutDetails() {
             <div className="bg-white rounded-lg flex flex-col justify-center overflow-hidden h-[250px] shadow-xl transform transition-all sm:max-w-lg sm:w-full">
               <div className="px-4 py-5 w-full flex ">
                 <div className="flex flex-col items-center w-full">
-                  <div className="flex-shrink-0">
-                    <ExclamationTriangleIcon
-                      className="h-6 w-6 text-red-600"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  
                   <div className="ml-3 w-full flex-1 pt-2">
                     <Dialog.Title
                       as="h3"
