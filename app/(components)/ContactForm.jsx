@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { ContactFormSchema, subjects } from "@/lib/utils/validation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +24,16 @@ const ContactForm = () => {
     try {
       await ContactFormSchema.validate(formData, { abortEarly: false });
       setErrors({});
+      toast.success("Thanks for reaching out. We'll get back to you ASAP.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        className: "toast-success",
+      });
     } catch (err) {
       const validationErrors = {};
       err.inner.forEach((error) => {
@@ -36,15 +48,17 @@ const ContactForm = () => {
           subject: "",
           message: "",
         });
-      }, 1000);
+      }, 1500);
     }
   };
 
   return (
     <form
+      id="ContactForm"
       onSubmit={handleSubmit}
       className="max-w-xl w-full py-5 border-gray-50 border-[1px] border-opacity-10 rounded-md px-5 my-10"
     >
+      <ToastContainer />
       <div className="mb-4">
         <label htmlFor="fullName" className="block mb-1 text-white">
           Full Name
