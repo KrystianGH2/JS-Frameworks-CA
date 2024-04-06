@@ -8,7 +8,6 @@ import {
   HiOutlineMenuAlt2,
   HiOutlineX,
 } from "react-icons/hi";
-import Categories from "./Categories";
 import SearchBar from "./SearchBar";
 import Cart from "./Cart";
 import usePaginationStore from "@/lib/utils/store";
@@ -38,7 +37,9 @@ export default function Navbar() {
               >
                 {toggle ? <HiOutlineMenuAlt2 /> : <HiOutlineX />}
               </div>
-              <h1 className="font-poppins font-black">ECOM.CO</h1>
+              <Link href={"/"}>
+                <h1 className="font-poppins font-black">ECOM.CO</h1>
+              </Link>
             </div>
             <div className="md:block hidden">
               <ul className="font-poppins list-none sm:flex sm:pt-1 hidden justify-end items-center flex-1 gap-8">
