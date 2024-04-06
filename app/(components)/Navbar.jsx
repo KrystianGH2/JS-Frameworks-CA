@@ -38,7 +38,7 @@ export default function Navbar() {
               >
                 {toggle ? <HiOutlineMenuAlt2 /> : <HiOutlineX />}
               </div>
-              <h1 className="font-poppins">ECOM.CO</h1>
+              <h1 className="font-poppins font-black">ECOM.CO</h1>
             </div>
             <div className="md:block hidden">
               <ul className="font-poppins list-none sm:flex sm:pt-1 hidden justify-end items-center flex-1 gap-8">
