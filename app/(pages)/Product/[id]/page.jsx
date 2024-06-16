@@ -7,10 +7,12 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import ReviewCards from "../../../(components)/ReviewCards";
 import usePaginationStore from "@/lib/utils/store";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function ProductPage({ params }) {
   const [product, setProduct] = useState(null);
   const [rating, setRating] = useState(0);
+    const { toast } = useToast();
 
   const { addToCart } = usePaginationStore((state) => ({
     addToCart: state.addToCart,
@@ -29,6 +31,28 @@ export default function ProductPage({ params }) {
 
     fetchProduct();
   }, [params.id]);
+
+
+  
+   const handleAddToCart = async () => {
+     try {
+       if (addToCart) {
+         await addToCart(product);
+         toast({
+           title: `Added ${product.title} to cart`,
+           description: "Added item cart",
+           variant: "success",
+           duration: 2000,
+         });
+       }
+     } catch (e) {
+       toast({
+         title: "Error",
+         description: e.message,
+         status: "error",
+       });
+     }
+   };
 
   const discountedPrice = product?.price - product?.discountedPrice;
   const percentageSaved = ((discountedPrice / product?.price) * 100).toFixed(0);
@@ -120,7 +144,7 @@ export default function ProductPage({ params }) {
                     </div>
                     <div>
                       <button
-                        onClick={() => addToCart(product)}
+                        onClick={handleAddToCart}
                         className="bg-black text-white py-[10px] px-10 w-[180px] rounded-full"
                       >
                         Add to cart
