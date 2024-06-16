@@ -7,8 +7,11 @@ import "@smastrom/react-rating/style.css";
 import Link from "next/link";
 import usePaginationStore from "@/lib/utils/store";
 import { MdShoppingCartCheckout } from "react-icons/md";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function Card({ product }) {
+  const { toast } = useToast();
+
   const [rating, setRating] = useState(product.rating);
 
   const discountedPrice = product.price - product.discountedPrice;
@@ -17,6 +20,25 @@ export default function Card({ product }) {
 
   const initialPrice = product.price;
 
+  const handleAddToCart = async () => {
+    try {
+      if (addToCart) {
+        await addToCart(product);
+        toast({
+          title: `Added ${product.title} to cart`,
+          description: "Added item cart",
+          variant: "success",
+          duration: 2000,
+        });
+      }
+    } catch (e) {
+      toast({
+        title: "Error",
+        description: e.message,
+        status: "error",
+      });
+    }
+  };
   return (
     <div className={`${styles.flexCenter}`}>
       <section className="flex flex-col ">
@@ -64,8 +86,11 @@ export default function Card({ product }) {
               </div>
             </div>
           </Link>
-          <button  className="flex flex-row gap-2 items-center hover:drop-shadow-sm hover:text-gray-600 w-full font-medium" onClick={() => addToCart(product)}>
-            <MdShoppingCartCheckout className="text-xl"/> Add to cart
+          <button
+            className="flex flex-row gap-2 items-center hover:drop-shadow-sm hover:text-gray-600 w-full font-medium"
+            onClick={handleAddToCart}
+          >
+            <MdShoppingCartCheckout className="text-xl" /> Add to cart
           </button>
         </div>
       </section>
