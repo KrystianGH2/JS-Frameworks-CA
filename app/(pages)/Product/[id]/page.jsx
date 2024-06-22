@@ -12,7 +12,8 @@ import { useToast } from "@/components/ui/use-toast";
 export default function ProductPage({ params }) {
   const [product, setProduct] = useState(null);
   const [rating, setRating] = useState(0);
-    const { toast } = useToast();
+  const { toast } = useToast();
+  const [productQuantity, setProductQuantity] = useState(0);
 
   const { addToCart } = usePaginationStore((state) => ({
     addToCart: state.addToCart,
@@ -32,27 +33,43 @@ export default function ProductPage({ params }) {
     fetchProduct();
   }, [params.id]);
 
+  const increaseProduct = () => {
+    setProductQuantity(productQuantity + 1);
+  };
 
-  
-   const handleAddToCart = async () => {
-     try {
-       if (addToCart) {
-         await addToCart(product);
-         toast({
-           title: `Added ${product.title} to cart`,
-           description: "Added item cart",
-           variant: "success",
-           duration: 2000,
-         });
-       }
-     } catch (e) {
-       toast({
-         title: "Error",
-         description: e.message,
-         status: "error",
-       });
-     }
-   };
+  const decreaseProduct = () => {
+    if (productQuantity > 0) {
+      setProductQuantity(productQuantity - 1);
+    }
+  };
+
+  const handleAddToCart = async () => {
+    try {
+      if (addToCart) {
+        if (productQuantity > 0) {
+          await addToCart(product, productQuantity); // Pass product and quantity correctly
+          toast({
+            title: `Added ${productQuantity} ${product.title}(s) to cart`,
+            description: "Added items to cart",
+            variant: "success",
+            duration: 2000,
+          });
+        } else if (productQuantity === 0) {
+          toast({
+            title: "Invalid Quantity",
+            description: "Please select a valid quantity to add to cart",
+            variant: "destructive",
+          });
+        }
+      }
+    } catch (e) {
+      toast({
+        title: "Error",
+        description: e.message,
+        status: "error",
+      });
+    }
+  };
 
   const discountedPrice = product?.price - product?.discountedPrice;
   const percentageSaved = ((discountedPrice / product?.price) * 100).toFixed(0);
@@ -85,7 +102,7 @@ export default function ProductPage({ params }) {
               <div className="flex w-full justify-center items-center overflow-hidden ">
                 <img
                   className="w-full sm:h-[400px] lg:h-[400px] object-cover rounded"
-                  src={product.image.url}
+                  src={product?.image?.url}
                   alt={product.title}
                 />
               </div>
@@ -133,12 +150,18 @@ export default function ProductPage({ params }) {
 
                   <div className="flex flex-row w-full justify-start gap-6">
                     <div className="bg-gray-200 flex flex-row rounded-badge text-black w-[120px]  justify-around items-center">
-                      <button className=" px-5 cursor-pointer text-xl">
+                      <button
+                        className=" px-5 cursor-pointer text-xl hover:text-2xl z-10 "
+                        onClick={decreaseProduct}
+                      >
                         {" "}
                         -
                       </button>
-                      <small>1</small>
-                      <button className=" px-5 cursor-pointer text-xl">
+                      <small>{productQuantity}</small>
+                      <button
+                        className=" px-5 cursor-pointer text-xl"
+                        onClick={increaseProduct}
+                      >
                         +
                       </button>
                     </div>
